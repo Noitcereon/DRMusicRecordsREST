@@ -8,7 +8,7 @@ namespace DRMusicLib
     {
         private string _title;
         private string _artist;
-        private DateTimeOffset _yearOfPublication;
+        private int _yearOfPublication;
         private int _durationInSeconds;
         private bool _isCertifiedPlatinum;
 
@@ -16,7 +16,7 @@ namespace DRMusicLib
         {
 
         }
-        public MusicRecord(string title, string artist, DateTimeOffset yearOfPublication, int durationInSeconds, bool isCertifiedPlatinum)
+        public MusicRecord(string title, string artist, int yearOfPublication, int durationInSeconds, bool isCertifiedPlatinum)
         {
             _title = title;
             _artist = artist;
@@ -27,7 +27,7 @@ namespace DRMusicLib
 
         public string Title => _title;
         public string Artist => _artist;
-        public DateTimeOffset YearOfPublication => _yearOfPublication;
+        public int YearOfPublication => _yearOfPublication;
         public int DurationInSeconds => _durationInSeconds;
         public bool IsCertifiedPlatinum => _isCertifiedPlatinum;
 
