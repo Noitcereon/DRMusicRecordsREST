@@ -11,9 +11,9 @@ namespace DRMusicRecordsREST.Managers
         private static List<MusicRecord> MusicRecords = new List<MusicRecord>
         {
             new MusicRecord("Running with the Wolves", "Aurora",
-                2016, 300, 
+                2015, 300, 
                 false),
-            new MusicRecord("Uprising", "Muse", 2004,
+            new MusicRecord("Uprising", "Muse", 2009,
                 400, true)
         };
         public IList<MusicRecord> GetAllRecords()
