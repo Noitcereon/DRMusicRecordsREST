@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace DRMusicRecordsREST
 {
@@ -25,6 +26,12 @@ namespace DRMusicRecordsREST
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "DR MusicRecords API",
+                    Version = "v1.0"
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +41,10 @@ namespace DRMusicRecordsREST
             {
                 app.UseDeveloperExceptionPage();
             }
+            //app.UseCors()
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "DR MusicRecords API v1.0"));
 
             app.UseRouting();
 

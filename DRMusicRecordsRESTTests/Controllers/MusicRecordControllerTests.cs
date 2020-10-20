@@ -23,6 +23,7 @@ namespace DRMusicRecordsREST.Controllers.Tests
         [TestMethod()]
         public void GetAllRecordsTest()
         {
+            Assert.IsNotNull(manager);
             Assert.AreEqual(manager.GetAllRecords().Count, 2);
         }
     }
