@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DRMusicRecordsREST", "DRMusicRecordsREST\DRMusicRecordsREST.csproj", "{4DAA2989-2F63-4587-8844-08C35EAD8F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRMusicLib", "DRMusicLib\DRMusicLib.csproj", "{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DRMusicLib", "DRMusicLib\DRMusicLib.csproj", "{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRMusicRecordsRESTTests", "DRMusicRecordsRESTTests\DRMusicRecordsRESTTests.csproj", "{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
