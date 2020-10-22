@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DRMusicRecordsREST", "DRMus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DRMusicLib", "DRMusicLib\DRMusicLib.csproj", "{4CE9EF1B-D2BF-4BF2-94D8-0E3DE2B39CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRMusicRecordsRESTTests", "DRMusicRecordsRESTTests\DRMusicRecordsRESTTests.csproj", "{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DRMusicRecordsRESTTests", "DRMusicRecordsRESTTests\DRMusicRecordsRESTTests.csproj", "{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UISeleniumTest", "UISeleniumTest\UISeleniumTest.csproj", "{36849666-1E62-42B0-B267-42EAFED92F0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7062B2-2F08-42A6-9F22-D0BC2C746ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36849666-1E62-42B0-B267-42EAFED92F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36849666-1E62-42B0-B267-42EAFED92F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36849666-1E62-42B0-B267-42EAFED92F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36849666-1E62-42B0-B267-42EAFED92F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
