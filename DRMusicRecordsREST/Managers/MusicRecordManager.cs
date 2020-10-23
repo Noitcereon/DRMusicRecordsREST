@@ -14,7 +14,12 @@ namespace DRMusicRecordsREST.Managers
                 2015, 300, 
                 false),
             new MusicRecord("Uprising", "Muse", 2009,
-                400, true)
+                420, true),
+            new MusicRecord("Knights of Cydonia", "Muse", 2006,
+                480, true),
+            new MusicRecord("Moon Walker", "Safri Duo", 2003,
+                509, false),
+            new MusicRecord("Roundabout", "Yes", 1980, 720, true)
         };
         public IList<MusicRecord> GetAllRecords()
         {
@@ -27,21 +32,21 @@ namespace DRMusicRecordsREST.Managers
             List<MusicRecord> tempSearchList;
             
             tempSearchList = MusicRecords.FindAll(x => x.Title.Contains(searchQuery.Title));
-            if (tempSearchList.Count > 0)
+            if (tempSearchList.Count > 0 &&  !String.IsNullOrWhiteSpace(searchQuery.Title)) 
             {
-                CheckForDuplicateAndAdd(tempSearchList, output);
+                output = CheckForDuplicateAndAdd(tempSearchList, output);
             }
-
+            // TODO: search in tempList instead of MusicRecords (with null/0 check.)
             tempSearchList = MusicRecords.FindAll(x => x.Artist.Contains(searchQuery.Artist));
-            if (tempSearchList.Count > 0)
+            if (tempSearchList.Count > 0 && !String.IsNullOrWhiteSpace(searchQuery.Artist))
             {
-                CheckForDuplicateAndAdd(tempSearchList, output);
+                output = CheckForDuplicateAndAdd(tempSearchList, output);
             }
 
             tempSearchList = MusicRecords.FindAll(x => x.DurationInSeconds < searchQuery.DurationInSeconds);
-            if (tempSearchList.Count > 0)
+            if (tempSearchList.Count > 0 && searchQuery.DurationInSeconds > 0)
             {
-                CheckForDuplicateAndAdd(tempSearchList, output);
+               output = CheckForDuplicateAndAdd(tempSearchList, output);
             }
 
             return output;
@@ -49,7 +54,7 @@ namespace DRMusicRecordsREST.Managers
 
         private List<MusicRecord> CheckForDuplicateAndAdd(List<MusicRecord> filteredRecordList, List<MusicRecord> currentOutput)
         {
-            foreach (var record in filteredRecordList)
+            foreach (MusicRecord record in filteredRecordList)
             {
                 if (currentOutput.Contains(record))
                 {
