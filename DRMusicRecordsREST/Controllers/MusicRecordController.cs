@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DRMusicLib;
 using DRMusicRecordsREST.Managers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,10 +34,10 @@ namespace DRMusicRecordsREST.Controllers
             return NotFound("No records found.");
         }
 
-        [HttpGet("{search}")]
+        [HttpGet("search")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult SearchRecords([FromBody] string searchQuery)
+        public IActionResult SearchRecords([FromQuery] string searchQuery)
         {
             var result = _manager.SearchRecords(searchQuery);
 

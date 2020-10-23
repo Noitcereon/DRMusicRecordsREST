@@ -21,29 +21,46 @@ namespace DRMusicRecordsREST.Managers
             return MusicRecords;
         }
 
-        public List<MusicRecord> SearchRecords(string searchQuery)
+        public List<MusicRecord> SearchRecords(string SearchQuery)
         {
-            List<MusicRecord> output = new List<MusicRecord>();
-            List<MusicRecord> tempRecordsForSearch = new List<MusicRecord>();
-
-            tempRecordsForSearch = MusicRecords.FindAll(x => x.Title.Contains(searchQuery));
-
-            if (tempRecordsForSearch.Count > 0)
-            {
-                foreach (var record in tempRecordsForSearch)
-                {
-                    output.Add(record);
-                }
-            }
-            else if (MusicRecords.FindAll(x => x.Artist.Contains(searchQuery)).Count > 0)
-            {
-
-            }
-            
+            List<MusicRecord> Output = new List<MusicRecord>();
 
 
-            return output;
+
+            return Output;
+
         }
+        //public List<MusicRecord> SearchRecords(string searchQuery)
+        //{
+        //    List<MusicRecord> output = new List<MusicRecord>();
+        //    List<MusicRecord> tempRecordsForSearch = new List<MusicRecord>();
+
+        //    tempRecordsForSearch = MusicRecords.FindAll(x => x.Title.Contains(searchQuery));
+
+        //    if (tempRecordsForSearch.Count > 0)
+        //    {
+        //        foreach (var record in tempRecordsForSearch)
+        //        {
+        //            output.Add(record);
+        //        }
+        //    }
+        //    if (MusicRecords.FindAll(x => x.Artist.Contains(searchQuery)).Count > 0)
+        //    {
+
+        //    }
+
+        //    if (MusicRecords.FindAll(x=> x.DurationInSeconds))
+        //    {
+                
+        //    }
+
+        //    if (MusicRecords.FindAll(x => x.IsCertifiedPlatinum = ))
+        //    {
+                
+        //    }
+
+        //    return output;
+        //}
 
         //private List<MusicRecord> FindMusicRecordByProperty(string searchQuery, string property)
         //{
