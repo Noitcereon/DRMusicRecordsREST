@@ -22,7 +22,7 @@ namespace DRMusicRecordsREST.Controllers
 
             if (_manager == null)
             {
-                return NotFound("No records found");
+                return NotFound("Manager not found (no records retrieved)");
             }
 
             if (_manager.GetAllRecords() != null)
@@ -30,7 +30,27 @@ namespace DRMusicRecordsREST.Controllers
                 return Ok(result);
             }
 
-            return NotFound("Not found, lel.");
+            return NotFound("No records found.");
+        }
+
+        [HttpGet("{search}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public IActionResult SearchRecords([FromBody] string searchQuery)
+        {
+            var result = _manager.SearchRecords(searchQuery);
+
+            if (_manager == null)
+            {
+                NotFound("Search didn't return any results.");
+            }
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+
+            return NotFound("Search did not get any results.");
         }
     }
 }
