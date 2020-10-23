@@ -21,14 +21,44 @@ namespace DRMusicRecordsREST.Managers
             return MusicRecords;
         }
 
-        public List<MusicRecord> SearchRecords(string SearchQuery)
+        public List<MusicRecord> SearchRecords(FilterMusicRecord searchQuery)
         {
-            List<MusicRecord> Output = new List<MusicRecord>();
+            List<MusicRecord> output = new List<MusicRecord>();
+            List<MusicRecord> tempSearchList;
+            
+            tempSearchList = MusicRecords.FindAll(x => x.Title.Contains(searchQuery.Title));
+            if (tempSearchList.Count > 0)
+            {
+                CheckForDuplicateAndAdd(tempSearchList, output);
+            }
 
+            tempSearchList = MusicRecords.FindAll(x => x.Artist.Contains(searchQuery.Artist));
+            if (tempSearchList.Count > 0)
+            {
+                CheckForDuplicateAndAdd(tempSearchList, output);
+            }
 
+            tempSearchList = MusicRecords.FindAll(x => x.DurationInSeconds < searchQuery.DurationInSeconds);
+            if (tempSearchList.Count > 0)
+            {
+                CheckForDuplicateAndAdd(tempSearchList, output);
+            }
 
-            return Output;
+            return output;
+        }
 
+        private List<MusicRecord> CheckForDuplicateAndAdd(List<MusicRecord> filteredRecordList, List<MusicRecord> currentOutput)
+        {
+            foreach (var record in filteredRecordList)
+            {
+                if (currentOutput.Contains(record))
+                {
+                    continue;
+                }
+                currentOutput.Add(record);
+            }
+
+            return currentOutput;
         }
         //public List<MusicRecord> SearchRecords(string searchQuery)
         //{

@@ -37,8 +37,9 @@ namespace DRMusicRecordsREST.Controllers
         [HttpGet("search")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult SearchRecords([FromQuery] string searchQuery)
+        public IActionResult SearchRecords([FromQuery] FilterMusicRecord searchQuery)
         {
+            if (searchQuery == null) return NotFound("Search query is empty.");
             var result = _manager.SearchRecords(searchQuery);
 
             if (_manager == null)
