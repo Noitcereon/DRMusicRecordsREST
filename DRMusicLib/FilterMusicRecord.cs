@@ -10,6 +10,20 @@ namespace DRMusicLib
         private string _artist;
         private int _durationInSeconds;
 
+        public FilterMusicRecord(string title, string artist, int durationInSeconds)
+        {
+            _title = title;
+            _artist = artist;
+            _durationInSeconds = durationInSeconds;
+        }
+
+        public FilterMusicRecord()
+        {
+            _title = "";
+            _artist = "";
+            _durationInSeconds = 0;
+        }
+
         public string Title
         {
             get => _title;
