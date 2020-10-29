@@ -3,6 +3,7 @@ using DRMusicRecordsREST.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DRMusicLib;
 using DRMusicRecordsREST.Managers;
 
 namespace DRMusicRecordsREST.Controllers.Tests
@@ -30,6 +31,8 @@ namespace DRMusicRecordsREST.Controllers.Tests
         [TestMethod]
         public void SearchRecordsTest()
         {
+            FilterMusicRecord FMR = new FilterMusicRecord("Test","test",1090);
+            Assert.IsNotNull(manager.SearchRecords(FMR));
 
         }
     }
