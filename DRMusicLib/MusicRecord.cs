@@ -18,18 +18,42 @@ namespace DRMusicLib
         }
         public MusicRecord(string title, string artist, int yearOfPublication, int durationInSeconds, bool isCertifiedPlatinum)
         {
-            _title = title;
-            _artist = artist;
-            _yearOfPublication = yearOfPublication;
-            _durationInSeconds = durationInSeconds;
-            _isCertifiedPlatinum = isCertifiedPlatinum;
+            Title = title;
+            Artist = artist;
+            YearOfPublication = yearOfPublication;
+            DurationInSeconds = durationInSeconds;
+            IsCertifiedPlatinum = isCertifiedPlatinum;
         }
 
-        public string Title => _title;
-        public string Artist => _artist;
-        public int YearOfPublication => _yearOfPublication;
-        public int DurationInSeconds => _durationInSeconds;
-        public bool IsCertifiedPlatinum => _isCertifiedPlatinum;
+        public string Title
+        {
+            get => _title;
+            set => _title = value;
+        }
+
+        public string Artist
+        {
+            get => _artist;
+            set => _artist = value;
+        }
+
+        public int YearOfPublication
+        {
+            get => _yearOfPublication;
+            set => _yearOfPublication = value;
+        }
+
+        public int DurationInSeconds
+        {
+            get => _durationInSeconds;
+            set => _durationInSeconds = value;
+        }
+
+        public bool IsCertifiedPlatinum
+        {
+            get => _isCertifiedPlatinum;
+            set => _isCertifiedPlatinum = value;
+        }
 
         public override string ToString()
         {
