@@ -54,5 +54,18 @@ namespace DRMusicRecordsREST.Controllers
 
             return NotFound("Search did not get any results.");
         }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public IActionResult AddRecord([FromBody]MusicRecord musicRecord)
+        {
+            if (musicRecord.Title == null)
+            {
+                return BadRequest();
+            }
+            string response = _manager?.AddRecord(musicRecord);
+            return Ok(response);
+        }
     }
 }
