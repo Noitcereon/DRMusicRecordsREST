@@ -73,14 +73,14 @@ namespace DRMusicRecordsREST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeleteRecord(string artist, string title)
+        public IActionResult DeleteRecord([FromQuery]string artist, [FromQuery]string title)
         {
             if (String.IsNullOrEmpty(title) || String.IsNullOrEmpty(artist))
             {
                 return BadRequest();
             }
 
-            int result = _manager.DeleteRecord(title, artist);
+            int result = _manager.DeleteRecord(artist, title);
             if (result == 0)
             {
                 return NotFound("No record found to delete");
