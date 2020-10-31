@@ -60,7 +60,7 @@ namespace DRMusicRecordsREST.Controllers
         [ProducesResponseType(400)]
         public IActionResult AddRecord([FromBody]MusicRecord musicRecord)
         {
-            if (musicRecord.Title == null)
+            if (musicRecord == null)
             {
                 return BadRequest();
             }

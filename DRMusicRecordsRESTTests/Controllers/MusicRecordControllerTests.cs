@@ -35,5 +35,15 @@ namespace DRMusicRecordsREST.Controllers.Tests
             Assert.IsNotNull(manager.SearchRecords(FMR));
 
         }
+
+        [TestMethod]
+        public void AddRecordTest()
+        {
+           int initCount = manager.GetAllRecords().Count;
+           MusicRecord testOb = new MusicRecord("Oxygen","Three foot crunch",2011,200,false);
+           manager.AddRecord(testOb);
+
+           Assert.AreEqual(initCount +1,manager.GetAllRecords().Count);
+        }
     }
 }
