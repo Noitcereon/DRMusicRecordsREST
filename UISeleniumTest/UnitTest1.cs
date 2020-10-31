@@ -11,8 +11,8 @@ namespace UISeleniumTest
     [TestClass]
     public class UnitTest1
     {
-        private static readonly string Directory = @"C:\Users\mtlau\source\repos\DRMusicRecordsREST\UISeleniumTest\Drivers";
-        //private static readonly string Directory = @"C:\Users\tba\source\repos\3_semester\DRMusicRecordsREST\UISeleniumTest\Drivers";
+        //private static readonly string Directory = @"C:\Users\mtlau\source\repos\DRMusicRecordsREST\UISeleniumTest\Drivers";
+        private static readonly string Directory = @"F:\visual_studio_projects\repos\3_semester\DRMusicRecordsREST\UISeleniumTest\Drivers";
         private const string LocalUrl = "http://localhost:3000/";
         private const string AzureUrl = "https://drmusicwebapp.azurewebsites.net";
 
@@ -20,8 +20,8 @@ namespace UISeleniumTest
         [ClassInitialize]
         public static void Initialize(TestContext context)
         {
-            _driver = new ChromeDriver(Directory);
-            //_driver = new FirefoxDriver(Directory);
+            //_driver = new ChromeDriver(Directory);
+            _driver = new FirefoxDriver(Directory);
             _driver.Navigate().GoToUrl(LocalUrl);
 
         }
@@ -55,7 +55,6 @@ namespace UISeleniumTest
         [TestMethod]
         public void SearchByTest()
         {
-
             IWebElement content = _driver.FindElement(By.Id("GetAllUL"));
             var searchOption = _driver.FindElement(By.Id("searchOption"));
             var searchInput = _driver.FindElement(By.Id("searchInput"));
@@ -73,7 +72,24 @@ namespace UISeleniumTest
         [TestMethod]
         public void PostTest()
         {
+            IWebElement artistInput = _driver.FindElement(By.Id("InpArtist"));
+            IWebElement titleInput = _driver.FindElement(By.Id("InpTitle"));
+            IWebElement durationInput = _driver.FindElement(By.Id("InpDuration"));
+            IWebElement yearInput = _driver.FindElement(By.Id("InpYear"));
 
+            artistInput.SendKeys("Ylvis");
+            titleInput.SendKeys("Stonehenge");
+            durationInput.SendKeys("534");
+            yearInput.SendKeys("2012");
+
+            IWebElement addBtn = _driver.FindElement(By.Id("PostBtn"));
+            addBtn.Click();
+
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            IWebElement successMessage = _driver.FindElement(By.Id("addSuccessful"));
+
+            Assert.IsTrue(successMessage.Displayed);
         }
+
     }
 }
