@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DRMusicLib;
 using DRMusicRecordsREST.Managers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DRMusicRecordsREST.Controllers
@@ -58,7 +59,7 @@ namespace DRMusicRecordsREST.Controllers
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public IActionResult AddRecord([FromBody]MusicRecord musicRecord)
+        public IActionResult AddRecord([FromBody] MusicRecord musicRecord)
         {
             if (musicRecord == null)
             {
@@ -66,6 +67,26 @@ namespace DRMusicRecordsREST.Controllers
             }
             string response = _manager?.AddRecord(musicRecord);
             return Ok(response);
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult DeleteRecord(string title, string artist)
+        {
+            if (String.IsNullOrEmpty(title) || String.IsNullOrEmpty(artist))
+            {
+                return BadRequest();
+            }
+
+            int result = _manager.DeleteRecord(title, artist);
+            if (result == 0)
+            {
+                return NotFound("No record found to delete");
+            }
+
+            return Ok(result);
         }
     }
 }

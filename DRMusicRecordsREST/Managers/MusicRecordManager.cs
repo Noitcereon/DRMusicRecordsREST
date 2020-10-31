@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using DRMusicLib;
 
@@ -71,6 +72,18 @@ namespace DRMusicRecordsREST.Managers
             MusicRecords.Add(musicRecord);
 
             return $"Record added: {musicRecord.Title} - {musicRecord.Artist}";
+        }
+
+        public int DeleteRecord(string title, string artist)
+        {
+            MusicRecord recordToDelete = MusicRecords.Find(x => x.Title == title && x.Artist == artist);
+            if (recordToDelete == null)
+            {
+                return 0;
+            }
+            
+            MusicRecords.Remove(recordToDelete);
+            return 1;
         }
     }
 }
