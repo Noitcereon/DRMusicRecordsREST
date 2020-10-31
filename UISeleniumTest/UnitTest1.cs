@@ -86,7 +86,25 @@ namespace UISeleniumTest
             addBtn.Click();
 
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            IWebElement successMessage = _driver.FindElement(By.Id("addSuccessful"));
+            IWebElement successMessage = wait.Until(d =>d.FindElement(By.Id("addSuccessful")));
+
+            Assert.IsTrue(successMessage.Displayed);
+        }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+            IWebElement artistInput = _driver.FindElement(By.Id("deleteArtist"));
+            IWebElement titleInput = _driver.FindElement(By.Id("deleteTitle"));
+
+            artistInput.SendKeys("Ylvis");
+            titleInput.SendKeys("Stonehenge");
+
+            IWebElement deleteBtn = _driver.FindElement(By.Id("deleteBtn"));
+            deleteBtn.Click();
+
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            IWebElement successMessage = wait.Until(d => d.FindElement(By.Id("deleteSuccessful")));
 
             Assert.IsTrue(successMessage.Displayed);
         }
