@@ -2,6 +2,7 @@
 using DRMusicRecordsREST.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using DRMusicLib;
 using DRMusicRecordsREST.Managers;
@@ -44,6 +45,16 @@ namespace DRMusicRecordsREST.Controllers.Tests
            manager.AddRecord(testOb);
 
            Assert.AreEqual(initCount +1,manager.GetAllRecords().Count);
+        }
+
+        [TestMethod]
+        public void DeleteRecordTest()
+        {
+            int expectedResult = manager.GetAllRecords().Count -1;
+            manager.DeleteRecord("Muse", "Uprising");
+            int countAfterDelete = manager.GetAllRecords().Count;
+
+            Assert.AreEqual(expectedResult, countAfterDelete);
         }
     }
 }

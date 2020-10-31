@@ -73,7 +73,7 @@ namespace DRMusicRecordsREST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeleteRecord(string title, string artist)
+        public IActionResult DeleteRecord(string artist, string title)
         {
             if (String.IsNullOrEmpty(title) || String.IsNullOrEmpty(artist))
             {

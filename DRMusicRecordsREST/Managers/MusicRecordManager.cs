@@ -74,7 +74,7 @@ namespace DRMusicRecordsREST.Managers
             return $"Record added: {musicRecord.Title} - {musicRecord.Artist}";
         }
 
-        public int DeleteRecord(string title, string artist)
+        public int DeleteRecord(string artist, string title)
         {
             MusicRecord recordToDelete = MusicRecords.Find(x => x.Title == title && x.Artist == artist);
             if (recordToDelete == null)
