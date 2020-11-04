@@ -85,5 +85,18 @@ namespace DRMusicRecordsREST.Managers
             MusicRecords.Remove(recordToDelete);
             return 1;
         }
+
+        public int UpdateRecord(string artist, string title, MusicRecord musicRecord)
+        {
+            MusicRecord recordToUpdate = MusicRecords.Find(x => x.Title == title && x.Artist == artist);
+            if (recordToUpdate == null)
+            {
+                return 0;
+            }
+
+            MusicRecords.Remove(recordToUpdate);
+            MusicRecords.Add(musicRecord);
+            return 1;
+        }
     }
 }

@@ -88,5 +88,25 @@ namespace DRMusicRecordsREST.Controllers
 
             return Ok(result);
         }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult UpdateRecord([FromQuery]string artist, [FromQuery]string title, [FromBody] MusicRecord musicRecord)
+        {
+            if (String.IsNullOrEmpty(artist) || String.IsNullOrEmpty(title) || musicRecord == null)
+            {
+                return BadRequest();
+            }
+
+            int result = _manager.UpdateRecord(artist, title, musicRecord);
+            if (result == 0)
+            {
+                return NotFound("No record to update");
+            }
+
+            return Ok(result);
+        }
     }
 }

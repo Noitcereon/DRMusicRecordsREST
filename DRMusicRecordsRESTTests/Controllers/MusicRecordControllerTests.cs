@@ -22,11 +22,38 @@ namespace DRMusicRecordsREST.Controllers.Tests
             manager = new MusicRecordManager();
         }
 
+        [ClassCleanup]
+        public static void CleanUp()
+        {
+            foreach (var i in manager.GetAllRecords())
+            {
+                manager.DeleteRecord(i.Artist, i.Title);
+            }
+
+            List<MusicRecord> MusicRecords = new List<MusicRecord>
+            {
+                new MusicRecord("Running with the Wolves", "Aurora",
+                    2015, 300,
+                    false),
+                new MusicRecord("Uprising", "Muse", 2009,
+                    420, true),
+                new MusicRecord("Knights of Cydonia", "Muse", 2006,
+                    480, true),
+                new MusicRecord("Moon Walker", "Safri Duo", 2003,
+                    509, false),
+                new MusicRecord("Roundabout", "Yes", 1980, 720, true)
+            };
+            foreach (var i in MusicRecords)
+            {
+                manager.AddRecord(i);
+            }
+        }
+
         [TestMethod()]
         public void GetAllRecordsTest()
         {
             Assert.IsNotNull(manager);
-            Assert.AreEqual(manager.GetAllRecords().Count, 2);
+            Assert.AreEqual(manager.GetAllRecords().Count, 5);
         }
 
         [TestMethod]
@@ -55,6 +82,22 @@ namespace DRMusicRecordsREST.Controllers.Tests
             int countAfterDelete = manager.GetAllRecords().Count;
 
             Assert.AreEqual(expectedResult, countAfterDelete);
+        }
+
+        [TestMethod]
+        public void PutRecordTest()
+        {
+            IList<MusicRecord> beforeTestList = new List<MusicRecord>(manager.GetAllRecords());
+
+            MusicRecord testRecord = new MusicRecord("testTitle","testArtist",7357,123,false);
+
+            manager.UpdateRecord("Muse", "Uprising", testRecord);
+
+            IList<MusicRecord> afterTestList = new List<MusicRecord>(manager.GetAllRecords());
+
+            Assert.IsTrue(beforeTestList.Contains(testRecord) == false);
+            Assert.IsTrue(afterTestList.Contains(testRecord));
+            
         }
     }
 }
