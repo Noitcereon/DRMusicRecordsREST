@@ -109,5 +109,35 @@ namespace UISeleniumTest
             Assert.IsTrue(successMessage.Displayed);
         }
 
+        [TestMethod]
+        public void UpdateTest()
+        {
+            IWebElement artistToUpdate = _driver.FindElement(By.Id("updateArtist"));
+            IWebElement titleToUpdate = _driver.FindElement(By.Id("updateTitle"));
+
+            artistToUpdate.SendKeys("Ylvis No!");
+            titleToUpdate.SendKeys("Ylvis Yes! Ylvis Always Yes!");
+
+            var artistInput = _driver.FindElement(By.Id("updateInpArtist"));
+            var titleInput = _driver.FindElement(By.Id("updateInpTitle"));
+            var durationInput = _driver.FindElement(By.Id("updateInpDuration"));
+            var releaseYearInput = _driver.FindElement(By.Id("updateInpYear"));
+
+            artistInput.SendKeys("Ylvis No!");
+            titleInput.SendKeys("Ylvis Yes! Ylvis Always Yes!");
+            durationInput.SendKeys("353");
+            releaseYearInput.SendKeys("2010");
+
+            IWebElement updateBtn = _driver.FindElement(By.Id("UpdateBtn"));
+            updateBtn.Click();
+
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+            wait.Until(d => d.FindElement(By.Id("updateSuccessful")));
+            IWebElement successMessage = _driver.FindElement(By.Id("updateMessage"));
+
+            //Updated: ${ updateArtist} - ${ updateTitle} => ${ this.updateMusicRecord.artist} - ${ this.updateMusicRecord.title}
+            Assert.AreEqual("Updated: Ylvis No! - Ylvis Yes! Ylvis Always Yes! => Ylvis No! - Ylvis Yes! Ylvis Always Yes!",
+                successMessage.Text);
+        }
     }
 }
